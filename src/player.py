@@ -8,3 +8,11 @@ class Player:
 
   def __str__(self):
     return f"{self.current_room}"
+
+  def move(self, command):
+    attribute = f"{command}_to"
+
+    if hasattr(self.current_room, attribute):
+      self.current_room = getattr(self.current_room, attribute)
+    else:
+      print("\nYou can't go that way!\n")
