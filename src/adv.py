@@ -102,7 +102,17 @@ while True:
             current_room.remove_item(item)
             item.on_take()
         elif item not in current_room.items:
-            print(f"There is no {item.name} in this room")
+            print(f"\n      There is no {item.name} in this room")
+
+
+    elif direction[0].startswith("d"):
+        item = items[direction[1]]
+        if item in player.items:
+            player.drop_item(item)
+            current_room.add_item(item)
+            item.on_drop()
+        elif item not in current_room.items:
+            print(f"\n      You are not carrying a {item.name}")
     
     elif direction[0].startswith("q"):
         break
